@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">androidbase</string>
+    <string name="we_cant_found_anything_here">No hemos encontra nada por aqui</string>
+    <string name="something_is_wrong">Algo salió mal</string>
+    <string name="try_again"><u>Intentar de nuevo</u></string>
+    <string name="without_internet_connection">Sin conexión a internet</string>
+    <string name="time_of_response_too_long">Tiempo de respuesta muy largo</string>
+    <string name="come_back"><u>Volver</u></string>
+</resources>
