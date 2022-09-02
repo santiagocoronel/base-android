@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import com.santiagocoronel.androidbase.R
@@ -15,13 +16,14 @@ import com.santiagocoronel.androidbase.dialog.GenericErrorDialog
 import java.lang.reflect.ParameterizedType
 import java.net.UnknownHostException
 import java.util.*
+import kotlin.reflect.KClass
 
 
-abstract class BaseFragment<T : ViewBinding> : Fragment(),
+abstract class BaseFragment<T : ViewBinding, E: AppCompatActivity>: Fragment(),
     GenericErrorDialog.OnClickListener {
 
     lateinit var binding: T
-    private var activity: BaseActivity<*>? = null
+    private var activity: E? = null
 
     companion object {
         const val GENERIC_ERROR = 100
@@ -65,7 +67,7 @@ abstract class BaseFragment<T : ViewBinding> : Fragment(),
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        activity = context as BaseActivity<*>
+        activity = context as E
     }
 
     override fun onDetach() {
@@ -129,8 +131,8 @@ abstract class BaseFragment<T : ViewBinding> : Fragment(),
     }
 
 
-    protected open fun getBaseActivity(): BaseActivity<*>? {
-        return activity
+    protected open fun getBaseActivity(): E {
+        return activity as E
     }
 
     open fun disableBackOnScreen() {
